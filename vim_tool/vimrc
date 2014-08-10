@@ -1,0 +1,162 @@
+"不适用vi的间键盘模式
+set nocompatible
+
+filetype on
+
+set background=dark 
+
+syntax enable
+
+syntax on
+
+"高亮匹配括号
+set showmatch
+
+set showcmd
+
+set guioptions-=T
+
+set vb t_vb=
+
+"现实光标位置
+set ruler
+
+set nohls
+
+set incsearch
+
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,sjis,euc-kr,ucs-2le,latin1,gbk,gb2312
+
+set encoding=utf-8
+"set encoding=gbk
+
+let &termencoding=&encoding
+
+"使用空格代替制表符
+set expandtab
+
+"tab键的宽度
+set tabstop=2
+
+set shiftwidth=2
+
+"历史记录数
+set history=10000
+
+"我的状态行显示的内容（包括文件类型和解码）
+set statusline=%F%m%r%h%w\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
+
+"总是显示状态
+set laststatus=2
+
+" 命令行（在状态行下）的高度，默认为1，这里是2
+set cmdheight=2
+
+" 通过使用: commands命令，告诉我们文件的哪一行被改变过
+set report=0
+
+colorscheme zellner 
+"colorscheme desert
+
+set background=dark
+
+set number
+
+set backspace=indent,eol,start
+
+nmap y :redo<CR>
+
+" add function comment
+map <C-F> :DoxFunc<CR>
+
+" add var comment
+map <C-B> O//
+
+" add license
+map <C-L> :DoxLicense
+
+" 显示左侧窗口浏览器
+nmap wm :WMToggle<cr>
+map <F2>  wm
+
+map <F3>  <C-W><C-W>
+
+" 查找
+nnoremap <silent> <F4> :Grep<CR>
+
+" 使得当前窗口变宽
+map <F5> <C-W>>
+
+" 自动 h cpp 文件跳转
+nnoremap <silent> <F6> :A<CR>
+
+" 格式化代码
+map <F8>  100000==
+
+" key-mappings for comment line in normal mode
+"noremap  <silent> <C-C> :call CommentLine()<CR>
+" key-mappings for range comment lines in visual <Shift-V> mode
+"vnoremap <silent> <C-C> :call RangeCommentLine()<CR>
+
+" key-mappings for un-comment line in normal mode
+"noremap  <silent> <C-U> :call UnCommentLine()<CR>
+" key-mappings for range un-comment lines in visual <Shift-V> mode
+"vnoremap <silent> <C-U> :call RangeUnCommentLine()<CR>
+
+
+
+set helplang=cn
+
+set tags=./tags
+
+let g:winManagerWindowLayout='FileExplorer|TagList'
+
+
+filetype plugin indent on
+
+set completeopt=longest,menu
+
+
+set hls
+
+set hlsearch
+
+
+"set syntax=cpp.doxygen
+let g:syntax_extra_cpp='doxygen'
+let g:load_doxygen_syntax=1
+
+" 按语言逻辑折叠 
+" za
+"set foldmethod=syntax
+
+"启动vim时不要自动折叠代码
+"set foldlevel=100 
+
+
+" mark
+" mm
+" next mark 
+" mn
+" prev makr
+" mp
+
+" White Space Wash
+" <C-R>
+let g:WhiteWash_Aggressive=1
+
+" big letter to small letter
+"gu
+
+
+" small letter to big letter
+"gU
+
+" 16进制来显示
+" %!xxd
+
+" insert time 
+"r !date '+%T %D'
+
+" make tags
+"r !ctags -R
