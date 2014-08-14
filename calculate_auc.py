@@ -1,4 +1,10 @@
 #http://blog.csdn.net/cserchen/article/details/7535182
+'''
+在广告中，根据CTR预测的高低，将最有可能被用户点击的广告按顺序依次展现，
+根据点击反馈，可以生成ROC曲线（y方向，点击+1；x方向，未点击+1），
+很明显，用户点击的越多，被点击的广告排序越靠前，ROC曲线下的面积越大，
+即AUC越大，则表明广告投放的效果越好，也就是CTR预测越准确
+'''
 def scoreClickAUC(num_clicks, num_impressions, predicted_ctr):
     """
     Calculates the area under the ROC curve (AUC) for click rates
