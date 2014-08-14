@@ -1,3 +1,4 @@
+#http://blog.csdn.net/cserchen/article/details/7535182
 def scoreClickAUC(num_clicks, num_impressions, predicted_ctr):
     """
     Calculates the area under the ROC curve (AUC) for click rates
@@ -15,6 +16,7 @@ def scoreClickAUC(num_clicks, num_impressions, predicted_ctr):
     -------
     auc : the area under the ROC curve (AUC) for click rates
     """
+    #从ctr大到小排序
     i_sorted = sorted(range(len(predicted_ctr)),key=lambda i: predicted_ctr[i],
                       reverse=True)
     auc_temp = 0.0
@@ -29,15 +31,15 @@ def scoreClickAUC(num_clicks, num_impressions, predicted_ctr):
 
     for i in range(len(predicted_ctr)):
         if last_ctr != predicted_ctr[i_sorted[i]]:
-            auc_temp += (click_sum+old_click_sum) * no_click / 2.0
-            old_click_sum = click_sum
+            auc_temp += (click_sum+old_click_sum) * no_click / 2.0#求梯形面积
+            old_click_sum = click_sum#let the old to be the current one
             no_click = 0.0
             last_ctr = predicted_ctr[i_sorted[i]]
-        no_click += num_impressions[i_sorted[i]] - num_clicks[i_sorted[i]]
+        no_click += num_impressions[i_sorted[i]] - num_clicks[i_sorted[i]]#non-click = pv - click
         no_click_sum += num_impressions[i_sorted[i]] - num_clicks[i_sorted[i]]
         click_sum += num_clicks[i_sorted[i]]
     auc_temp += (click_sum+old_click_sum) * no_click / 2.0
-    auc = auc_temp / (click_sum * no_click_sum)
+    auc = auc_temp / (click_sum * no_click_sum)#归一化
     return
 
 def main():
